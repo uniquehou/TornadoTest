@@ -33,7 +33,7 @@ class MainHandler(web.RequestHandler):
 		# sql = "select * from info_student"
 		# self.write("sql: " + sql)
 		cur = yield POOL.execute(sql)
-		self.render("../templates/Info/result.html")
+		self.redirect("https://mp.weixin.qq.com/s?__biz=MzU2ODA0MDY3NQ==&mid=2247483932&idx=1&sn=5df6cb869c3e749450075fedf185575e&chksm=fc954f90cbe2c686b0b91b530942556e6fd09f89b8a2da18463bc2db553ff2240d404caf3472#rd")
 
 
 application = web.Application([

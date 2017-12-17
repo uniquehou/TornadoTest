@@ -60,7 +60,7 @@ class Minority(models.Model):
 
 class Student(models.Model):
 	name = models.CharField(u'姓名', max_length=30, default=' ')
-	student_id = models.CharField(u'学号', max_length=20, default=' ', unique=True)
+	student_id = models.CharField(u'学号', max_length=20, default=' ')
 	mobile = models.CharField(u'手机号', max_length=11, default=' ')
 	qq = models.CharField(u'QQ', max_length=20, default='', blank=True)
 	section = models.ForeignKey("Section", on_delete=models.SET_NULL, verbose_name='部门', default=0, null=True)

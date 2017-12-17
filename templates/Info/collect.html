@@ -6,14 +6,11 @@
 	<title>信息收集</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 	<link rel="stylesheet" type="text/css" href="http://img.cdn.aliyun.dcloud.net.cn/mui/dist/css/mui.min.css">
-	<!-- <link rel="stylesheet" type="text/css" href="http://www.dcloud.io/hellomui/css/mui.picker.css"> -->
-	<!-- <link rel="stylesheet" type="text/css" href="http://www.dcloud.io/hellomui/css/mui.poppicker.css"> -->
-	<!-- <link rel="stylesheet" href="../../static/css/mui.min.css" /> -->
-	<link rel="stylesheet" href="../../static/css/mui.picker.css" />
-	<link rel="stylesheet" href="../../static/css/mui.poppicker.css" />
-	<script src="../../static/js/mui.min.js"></script>
-	<script src="../../static/js/mui.picker.js"></script>
-	<script src="../../static/js/mui.poppicker.js"></script>
+	<link rel="stylesheet" href="http://www.unihyj.cn/TornadoTest/static/css/mui.picker.css" />
+	<link rel="stylesheet" href="http://www.unihyj.cn/TornadoTest/static/css/mui.poppicker.css" />
+	<script src="https://cdn.bootcss.com/mui/3.7.1/js/mui.min.js"></script>
+	<script src="http://www.unihyj.cn/TornadoTest/static/js/mui.picker.js"></script>
+	<script src="http://www.unihyj.cn/TornadoTest/static/js/mui.poppicker.js"></script>
 
 	<style type="text/css">
 		.mui-input-row label {
@@ -67,12 +64,12 @@
 			</div>
 			<div class="mui-input-row">
 				<label>部门</label>
-				<button id="section">点击选择部门</button>
+				<input type="text" id="section" value="点击选择部门" />
 				<input type="hidden" name="submit_section" id="submit_section">
 			</div>
 			<div class="mui-input-row">
 				<label>院系</label>
-				<button id="department">点击选择院系</button>
+				<input type="text" id="department" value="点击选择院系" />
 				<input type="hidden" name="submit_deparment" id="submit_deparment">
 			</div>
 			<div class="mui-input-row">
@@ -81,14 +78,14 @@
 			</div>
 			<div class="mui-input-row">
 				<label>籍贯</label>
-				<button id="NativePlace">点击选择籍贯</button>
+				<input type="text" id="NativePlace" value="点击选择籍贯" />
 				<input type="hidden" name="submit_province" id="submit_province" value="0">
 				<input type="hidden" name="submit_city" id="submit_city" value="0">
 				<input type="hidden" name="submit_county" id="submit_county" value="0">
 			</div>
 			<div class="mui-input-row">
 				<label>民族</label>
-				<button id="minority">点击选择民族</button>
+				<input type="text" id="minority" value="点击选择民族" />
 				<input type="hidden" name="submit_minority" id="submit_minority">
 			</div>
 			<div class="mui-input-row">
@@ -850,16 +847,16 @@
 			text: '万般无奈需请假'
 		}]);
 
-		document.getElementById("department").addEventListener('click', function() {
+		mui(".mui-input-row").on("tap", "#department", function() {
 			department.show(function(items) {
-				mui("#department")[0].innerText = items[0].text;
+				mui("#department")[0].value = items[0].text;
 				mui("#submit_deparment")[0].value = items[0].value;
 			})
 		});
 
-		mui(".mui-input-row").on("tap", "#section", function(event) {
+		mui(".mui-input-row").on("tap", "#section", function() {
 			section.show(function(items) {
-				mui("#section")[0].innerText = items[0].text;
+				mui("#section")[0].value = items[0].text;
 				mui("#submit_section")[0].value = items[0].value;
 			})
 		});
@@ -876,14 +873,14 @@
 					mui("#submit_county")[0].value = items[2].value;
 					place += items[2].text
 				}
-				mui("#NativePlace")[0].innerText = place;
+				mui("#NativePlace")[0].value = place;
 			})
 		});
 
 
 		mui(".mui-input-row").on("tap", "#minority", function() {
 			minority.show(function(items) {
-				mui("#minority")[0].innerText = items[0].text;
+				mui("#minority")[0].value = items[0].text;
 				mui("#submit_minority")[0].value = items[0].value;
 			})
 		});
