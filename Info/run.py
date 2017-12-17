@@ -1,5 +1,6 @@
-from tornado import ioloop, web, gen
+from tornado import ioloop, web, gen, options
 from tornado_mysql import pools
+import sys
 
 POOL = pools.Pool(
 	dict(host='localhost', port=3306, user='root', passwd='root', db='tornadotest', charset="utf8"),
@@ -40,5 +41,14 @@ application = web.Application([
 ])
 
 if __name__ == "__main__":
-	application.listen(8888)
-	ioloop.IOLoop.instance().start()
+	options.parse_command_line()
+	def run(mid,port):
+		print("Process %d start" % mid)
+		sys.stdout.flush()
+		application.listen(port)
+		ioloop.IOLoop.instance().start()
+	jobs=list()
+	for mid,port in enumerate(range(9010,9014)):
+		p=multiprocessing.Process(target=run,args=(mid,port))
+		jobs.append(p)
+		p.start()
